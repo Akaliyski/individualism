@@ -1,0 +1,95 @@
+{\rtf1\ansi\deff0 {\fonttbl{\f0\fnil Garamond;}}
+{\info {\author .}{\company .}{\title .}}
+\deflang1033\plain\fs20
+{\footer\pard\qc\plain\f0\fs20\chpgn\par}
+{
+{\fs20\b\qc\line Matrix of correlations }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx1650
+\fs20\pard\intbl\ql { {Variables}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx2870
+\fs20\pard\intbl\qr { {(1)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4090
+\fs20\pard\intbl\qr { {(2)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5310
+\fs20\pard\intbl\qr { {(3)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6530
+\fs20\pard\intbl\qr { {(4)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7750
+\fs20\pard\intbl\qr { {(5)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx8970
+\fs20\pard\intbl\qr { {(6)}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(1) diff_H_BW}}\cell
+\cellx2870
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(2) diff_H_M}}\cell
+\cellx2870
+\qr {{0.881}}\cell
+\cellx4090
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(3) diff_H_GL}}\cell
+\cellx2870
+\qr {{0.805}}\cell
+\cellx4090
+\qr {{0.685}}\cell
+\cellx5310
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(4) diff_H_EVI}}\cell
+\cellx2870
+\qr {{0.909}}\cell
+\cellx4090
+\qr {{0.831}}\cell
+\cellx5310
+\qr {{0.807}}\cell
+\cellx6530
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(5) diff_H_INGL}}\cell
+\cellx2870
+\qr {{0.923}}\cell
+\cellx4090
+\qr {{0.853}}\cell
+\cellx5310
+\qr {{0.820}}\cell
+\cellx6530
+\qr {{0.877}}\cell
+\cellx7750
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1650
+\fs20\pard\intbl\ql { {(6) diff_H_A}}\cell
+\cellx2870
+\qr {{0.728}}\cell
+\cellx4090
+\qr {{0.787}}\cell
+\cellx5310
+\qr {{0.649}}\cell
+\cellx6530
+\qr {{0.715}}\cell
+\cellx7750
+\qr {{0.715}}\cell
+\cellx8970
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw15\brdrs\cellx8970{}\cell
+\row}
+
+
+\writepositionforappend
+}}

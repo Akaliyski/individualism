@@ -1,0 +1,115 @@
+{\rtf1\ansi\deff0 {\fonttbl{\f0\fnil Garamond;}}
+{\info {\author .}{\company .}{\title .}}
+\deflang1033\plain\fs20
+{\footer\pard\qc\plain\f0\fs20\chpgn\par}
+{
+{\fs20\b\qc\line Matrix of correlations }{\par}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx1870
+\fs20\pard\intbl\ql { {Variables}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx3090
+\fs20\pard\intbl\qr { {(1)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx4310
+\fs20\pard\intbl\qr { {(2)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx5530
+\fs20\pard\intbl\qr { {(3)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx6750
+\fs20\pard\intbl\qr { {(4)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx7970
+\fs20\pard\intbl\qr { {(5)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx9190
+\fs20\pard\intbl\qr { {(6)}}\cell
+\clbrdrt\brdrw10\brdrs \clbrdrb\brdrw25\brdrs  \cellx10410
+\fs20\pard\intbl\qr { {(7)}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(1) idv_Hofs}}\cell
+\cellx3090
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(2) idv_BW}}\cell
+\cellx3090
+\qr {{0.720}}\cell
+\cellx4310
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(3) idv_Minkov}}\cell
+\cellx3090
+\qr {{0.742}}\cell
+\cellx4310
+\qr {{0.906}}\cell
+\cellx5530
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(4) idv_globe}}\cell
+\cellx3090
+\qr {{0.788}}\cell
+\cellx4310
+\qr {{0.899}}\cell
+\cellx5530
+\qr {{0.840}}\cell
+\cellx6750
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(5) idv_Inglehart}}\cell
+\cellx3090
+\qr {{0.648}}\cell
+\cellx4310
+\qr {{0.928}}\cell
+\cellx5530
+\qr {{0.860}}\cell
+\cellx6750
+\qr {{0.887}}\cell
+\cellx7970
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(6) EVI}}\cell
+\cellx3090
+\qr {{0.683}}\cell
+\cellx4310
+\qr {{0.922}}\cell
+\cellx5530
+\qr {{0.851}}\cell
+\cellx6750
+\qr {{0.891}}\cell
+\cellx7970
+\qr {{0.883}}\cell
+\cellx9190
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\cellx1870
+\fs20\pard\intbl\ql { {(7) autonomy_Schw}}\cell
+\cellx3090
+\qr {{0.714}}\cell
+\cellx4310
+\qr {{0.821}}\cell
+\cellx5530
+\qr {{0.869}}\cell
+\cellx6750
+\qr {{0.809}}\cell
+\cellx7970
+\qr {{0.789}}\cell
+\cellx9190
+\qr {{0.801}}\cell
+\cellx10410
+\qr {{1.000}}\cell
+\row}
+{\trowd\trgaph108\trleft-108
+\clbrdrt\brdrw15\brdrs\cellx10410{}\cell
+\row}
+
+
+\writepositionforappend
+}}

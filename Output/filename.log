@@ -1,0 +1,250 @@
+--------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\akali\OneDrive - Lingnan University\Desktop\Replication_Files\Output\filename.log
+  log type:  text
+ opened on:   2 Jun 2025, 10:23:18
+
+.    foreach var of varlist ti_cpi van_index vdem_corr vdem_libdem wbgi_rle wbgi_gee gggi_ggi undp_hdi gdppc_ln dr_ig egov_hci g
+> ii_gii hf_efiscore rsf_pfi spi_opp spi_ospi vdem_mecorrpt wdi_lifexp wdi_mortinf wdi_empser wbgi_vae hf_prights hf_business gp
+> i_ss ffp_ued ffp_sl ffp_hr education coll_Pelham {
+  2.                 corr `var' individualism idv_H
+  3.    }
+(obs=58)
+
+             |   ti_cpi indivi~m idv_Hofs
+-------------+---------------------------
+      ti_cpi |   1.0000
+individual~m |   0.8711   1.0000
+    idv_Hofs |   0.6889   0.7349   1.0000
+
+(obs=58)
+
+             | van_in~x indivi~m idv_Hofs
+-------------+---------------------------
+   van_index |   1.0000
+individual~m |   0.6263   1.0000
+    idv_Hofs |   0.5597   0.7349   1.0000
+
+(obs=58)
+
+             | vdem_c~r indivi~m idv_Hofs
+-------------+---------------------------
+   vdem_corr |   1.0000
+individual~m |  -0.8156   1.0000
+    idv_Hofs |  -0.6607   0.7349   1.0000
+
+(obs=58)
+
+             | vdem_l~m indivi~m idv_Hofs
+-------------+---------------------------
+ vdem_libdem |   1.0000
+individual~m |   0.7367   1.0000
+    idv_Hofs |   0.6086   0.7349   1.0000
+
+(obs=58)
+
+             | wbgi_rle indivi~m idv_Hofs
+-------------+---------------------------
+    wbgi_rle |   1.0000
+individual~m |   0.8359   1.0000
+    idv_Hofs |   0.7016   0.7349   1.0000
+
+(obs=58)
+
+             | wbgi_gee indivi~m idv_Hofs
+-------------+---------------------------
+    wbgi_gee |   1.0000
+individual~m |   0.8335   1.0000
+    idv_Hofs |   0.6722   0.7349   1.0000
+
+(obs=57)
+
+             | gggi_ggi indivi~m idv_Hofs
+-------------+---------------------------
+    gggi_ggi |   1.0000
+individual~m |   0.7279   1.0000
+    idv_Hofs |   0.4742   0.7414   1.0000
+
+(obs=57)
+
+             | undp_hdi indivi~m idv_Hofs
+-------------+---------------------------
+    undp_hdi |   1.0000
+individual~m |   0.8492   1.0000
+    idv_Hofs |   0.6628   0.7414   1.0000
+
+(obs=56)
+
+             | gdppc_ln indivi~m idv_Hofs
+-------------+---------------------------
+    gdppc_ln |   1.0000
+individual~m |   0.8045   1.0000
+    idv_Hofs |   0.6248   0.7427   1.0000
+
+(obs=57)
+
+             |    dr_ig indivi~m idv_Hofs
+-------------+---------------------------
+       dr_ig |   1.0000
+individual~m |   0.7868   1.0000
+    idv_Hofs |   0.6759   0.7414   1.0000
+
+(obs=57)
+
+             | egov_hci indivi~m idv_Hofs
+-------------+---------------------------
+    egov_hci |   1.0000
+individual~m |   0.7887   1.0000
+    idv_Hofs |   0.6189   0.7414   1.0000
+
+(obs=56)
+
+             |  gii_gii indivi~m idv_Hofs
+-------------+---------------------------
+     gii_gii |   1.0000
+individual~m |  -0.8046   1.0000
+    idv_Hofs |  -0.5872   0.7415   1.0000
+
+(obs=58)
+
+             | hf_efi~e indivi~m idv_Hofs
+-------------+---------------------------
+ hf_efiscore |   1.0000
+individual~m |   0.5920   1.0000
+    idv_Hofs |   0.4866   0.7349   1.0000
+
+(obs=58)
+
+             |  rsf_pfi indivi~m idv_Hofs
+-------------+---------------------------
+     rsf_pfi |   1.0000
+individual~m |  -0.7284   1.0000
+    idv_Hofs |  -0.5919   0.7349   1.0000
+
+(obs=56)
+
+             |  spi_opp indivi~m idv_Hofs
+-------------+---------------------------
+     spi_opp |   1.0000
+individual~m |   0.8917   1.0000
+    idv_Hofs |   0.7117   0.7427   1.0000
+
+(obs=56)
+
+             | spi_ospi indivi~m idv_Hofs
+-------------+---------------------------
+    spi_ospi |   1.0000
+individual~m |   0.8746   1.0000
+    idv_Hofs |   0.6546   0.7427   1.0000
+
+(obs=58)
+
+             | vdem_m~t indivi~m idv_Hofs
+-------------+---------------------------
+vdem_mecor~t |   1.0000
+individual~m |   0.6807   1.0000
+    idv_Hofs |   0.5179   0.7349   1.0000
+
+(obs=57)
+
+             | wdi_li~p indivi~m idv_Hofs
+-------------+---------------------------
+  wdi_lifexp |   1.0000
+individual~m |   0.8016   1.0000
+    idv_Hofs |   0.5240   0.7414   1.0000
+
+(obs=57)
+
+             | wdi_mo~f indivi~m idv_Hofs
+-------------+---------------------------
+ wdi_mortinf |   1.0000
+individual~m |  -0.6746   1.0000
+    idv_Hofs |  -0.4703   0.7414   1.0000
+
+(obs=57)
+
+             | wdi_em~r indivi~m idv_Hofs
+-------------+---------------------------
+  wdi_empser |   1.0000
+individual~m |   0.8050   1.0000
+    idv_Hofs |   0.5673   0.7414   1.0000
+
+(obs=58)
+
+             | wbgi_vae indivi~m idv_Hofs
+-------------+---------------------------
+    wbgi_vae |   1.0000
+individual~m |   0.7865   1.0000
+    idv_Hofs |   0.6766   0.7349   1.0000
+
+(obs=58)
+
+             | hf_pri~s indivi~m idv_Hofs
+-------------+---------------------------
+  hf_prights |   1.0000
+individual~m |   0.8035   1.0000
+    idv_Hofs |   0.6500   0.7349   1.0000
+
+(obs=58)
+
+             | hf_bus~s indivi~m idv_Hofs
+-------------+---------------------------
+ hf_business |   1.0000
+individual~m |   0.6684   1.0000
+    idv_Hofs |   0.5296   0.7349   1.0000
+
+(obs=58)
+
+             |   gpi_ss indivi~m idv_Hofs
+-------------+---------------------------
+      gpi_ss |   1.0000
+individual~m |  -0.7052   1.0000
+    idv_Hofs |  -0.5813   0.7349   1.0000
+
+(obs=57)
+
+             |  ffp_ued indivi~m idv_Hofs
+-------------+---------------------------
+     ffp_ued |   1.0000
+individual~m |  -0.7849   1.0000
+    idv_Hofs |  -0.6735   0.7414   1.0000
+
+(obs=57)
+
+             |   ffp_sl indivi~m idv_Hofs
+-------------+---------------------------
+      ffp_sl |   1.0000
+individual~m |  -0.8631   1.0000
+    idv_Hofs |  -0.6785   0.7414   1.0000
+
+(obs=57)
+
+             |   ffp_hr indivi~m idv_Hofs
+-------------+---------------------------
+      ffp_hr |   1.0000
+individual~m |  -0.8109   1.0000
+    idv_Hofs |  -0.6381   0.7414   1.0000
+
+(obs=58)
+
+             | educat~n indivi~m idv_Hofs
+-------------+---------------------------
+   education |   1.0000
+individual~m |   0.7779   1.0000
+    idv_Hofs |   0.6788   0.7349   1.0000
+
+(obs=58)
+
+             | coll_P~m indivi~m idv_Hofs
+-------------+---------------------------
+ coll_Pelham |   1.0000
+individual~m |  -0.8693   1.0000
+    idv_Hofs |  -0.7251   0.7349   1.0000
+
+
+.    log close
+      name:  <unnamed>
+       log:  C:\Users\akali\OneDrive - Lingnan University\Desktop\Replication_Files\Output\filename.log
+  log type:  text
+ closed on:   2 Jun 2025, 10:23:18
+--------------------------------------------------------------------------------------------------------------------------------
