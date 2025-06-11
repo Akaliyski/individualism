@@ -4,7 +4,7 @@
 * Author: Plamen Akaliyski (Lingnan University)
 * Contact: akaliyski.plamen@gmail.com
 * Date created: 2025-05-29
-* Last updated: 2025-05-29
+* Last updated: 2025-06-12
 *************************************************************************************************
 
 clear all
@@ -12,7 +12,7 @@ set more off
 version 18.0
 
 * Define global path to your folder (adapt as needed)
-global path "C:\Users\akali\OneDrive - Lingnan University\Desktop\Replication_Files"
+global path "[...]"
 
 global raw_data_path "$path\Data\Raw_data"
 global proc_data_path "$path\Data\Processed_data"
