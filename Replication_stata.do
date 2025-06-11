@@ -80,6 +80,7 @@ save "$proc_data_path\idv_prepared", replace // save data for later use
 keep country_code country cowcode obesity_m obesity_f country_short country EN_EA $idv_dimensions flexibility_MK flex country_IDV_dim
 save "$proc_data_path\idv_dimensions_subset", replace  // save data with I-C dimensions for later use
 
+
 	**************************************************************************************************
     ****************************** Study 1a: Convergent Validity *************************************
 	**************************************************************************************************
@@ -203,6 +204,8 @@ saveold "$R_data_path\Difference_from_Hofstede.dta", version(12) replace
 	
 	
 	
+	
+	
 	******************************************************************************************
 	*************************** Study 1b: Nomological validity *******************************
 	******************************************************************************************
@@ -233,6 +236,10 @@ saveold "$R_data_path\Difference_from_Hofstede.dta", version(12) replace
    
    * Export note: Selected correlation coefficients (i.e., between each I-C and each predictor) were manually copied from the Stata Results window and compiled into an Excel file ("Study2b_Nomological_Correlations.xlsx") for data visualization in R (Figure 3).
 
+	
+	
+	
+	
 	
 	*********************************************************************************************
 	*********************** Study 1c: Implications for Predictive Utility ***********************
@@ -317,7 +324,6 @@ reg $DV_m idv_globe $IV_m, b
 	* Note on output export (Figure 4):The regression output from the above models was exported to CSV using esttab,
 * but the final figure used in the paper (Figure 4) is based on a manually curated file titled "Study2c_individualism_and_obesity.xlsx". This file was compiled by copying the regression coefficients and standard errors for each I-C index from the Stata Results window or the esttab output, and restructuring them for use in R for data visualization.
 
-	
 	
 	
 	*****************
@@ -652,6 +658,8 @@ reg $DV_m idv_globe $IV_m if sample==1, b
 	
 	
 	
+	
+	
 	*************************************************************************************************
 	********************* Study 2a: Building a New Individualism Index with WAVE 7 ******************
 	*************************************************************************************************
@@ -792,11 +800,11 @@ reg $DV_m idv_globe $IV_m if sample==1, b
 		paran childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7, iterations(100) all graph 
 		
 		*EFA (Principal Factors)
-		paran childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7, factor (pf) iterations(100) all graph 
+		paran childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7, factor (ipf) iterations(100) all graph 
 	
 		
 	** Exploratory factor analysis
-	factor childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7, pf 
+	factor childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7, ipf 
 		screeplot
 		predict ic_factor_pf7
 	
@@ -805,7 +813,7 @@ reg $DV_m idv_globe $IV_m if sample==1, b
 	
 	* Confirmatory factor analysis 
 sem (childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7 <- f1), ///
-  latent(f1) cov(e.childrearing7*e.obligations7) cov(e.equality7*e.neighbors7)
+  latent(f1) cov(e.childrearing7*e.obligations7) cov(e.equality7*e.neighbors7) standardized
 	estat gof, stats(all)
 	estat mindices
 
@@ -813,6 +821,9 @@ sem (childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7 <- 
 	save "$proc_data_path\WVS wave 7 aggregate level.dta", replace	
 		
 
+		
+		
+		
 		
 		
 	*****************************************************************
@@ -941,7 +952,7 @@ sem (childrearing7 obligations7 equality7 trustSD7 neighbors7 permissivness7 <- 
 
 	* Confirmatory factor analysis 
 sem (childrearing6 obligations6 equality6 trustSD6 neighbors6 permissivness6 <- f1), ///
-  latent(f1) cov(e.childrearing6*e.obligations6) cov(e.equality6*e.neighbors6)
+  latent(f1) cov(e.childrearing6*e.obligations6) cov(e.equality6*e.neighbors6) standardized
   
 	estat gof, stats(all)
 	estat mindices
@@ -980,7 +991,7 @@ sem (childrearing6 obligations6 equality6 trustSD6 neighbors6 permissivness6 <- 
 	corr individualism* 
 	
 	* Descriptive statistics for subindices and overall index for complete cases only (Table 7)
-	sum childrearing* obligations* equality* trustSD*  neighbors* permissivness* individualism* if !missing(individualism6, individualism7)
+	sum childrearing* obligations* equality* trustSD*  neighbors* permissivness* individualism* if !missing(individualism6, individualism7) 
 
 	* Paired t-tests to assess test–retest stability between waves (Table 7)
 	ttest childrearing6 == childrearing7
@@ -997,6 +1008,10 @@ sem (childrearing6 obligations6 equality6 trustSD6 neighbors6 permissivness6 <- 
 				
 				
 
+				
+				
+				
+				
 				
 	**********************************************************************
 	***************  Study 2c: Mapping Global Variation  *****************
@@ -1211,6 +1226,12 @@ foreach var of varlist childrearing obligations equality trustSD neighbors permi
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	*********************************************************************************************************
 	*****************************  Study 2d: Validating the New I-C Index ***********************************
 	*********************************************************************************************************
@@ -1272,6 +1293,7 @@ foreach var of varlist childrearing obligations equality trustSD neighbors permi
 	drop if country ==  .
 	
 	
+	
 			***************  Convergent Validity   **************
     * Restrict to countries with both Hofstede and new I-C scores
 	foreach var of varlist idv_BW idv_Minkov idv_globe idv_Inglehart EVI autonomy_Schw {
@@ -1283,6 +1305,8 @@ foreach var of varlist childrearing obligations equality trustSD neighbors permi
    	pwcorr individualism `var', sig obs
     }
 	* Note: Correlation tables were copied into Table 10 manually
+  
+  
   
      
 			***************  Discriminant Validity   **************
@@ -1302,15 +1326,25 @@ matrix R = r(C)
 	* The resulting correlation matrix (r(C)) was saved and formatted for SOM Table S6
   
   
-			********* Nomological validity (Full samples) *********
-	* Correlates each predictor with both the new index and Hofstede's index
-	log using filename.log, replace
-   foreach var of varlist ti_cpi van_index vdem_corr vdem_libdem wbgi_rle wbgi_gee gggi_ggi undp_hdi gdppc_ln dr_ig egov_hci gii_gii hf_efiscore rsf_pfi spi_opp spi_ospi vdem_mecorrpt wdi_lifexp wdi_mortinf wdi_empser wbgi_vae hf_prights hf_business gpi_ss ffp_ued ffp_sl ffp_hr education coll_Pelham {
+  
+  
+			********* Nomological Validity *********
+	* Correlates each predictor with both the new index (full sample)
+   foreach var of varlist ti_cpi van_index vdem_corr vdem_libdem wbgi_rle wbgi_gee gggi_ggi undp_hdi gdppc_ln dr_ig egov_hci gii_gii hf_efiscore rsf_pfi spi_opp spi_ospi vdem_mecorrpt wdi_lifexp wdi_mortinf wdi_empser wbgi_vae hf_prights hf_business gpi_ss ffp_sl ffp_hr education coll_Pelham {
+		corr `var' individualism
+   }
+   * Output was manually transferred to SOM Table S6
+			
+	* Correlates each predictor with both the new index and Hofstede's index (fixed samples)
+   foreach var of varlist ti_cpi van_index vdem_corr vdem_libdem wbgi_rle wbgi_gee gggi_ggi undp_hdi gdppc_ln dr_ig egov_hci gii_gii hf_efiscore rsf_pfi spi_opp spi_ospi vdem_mecorrpt wdi_lifexp wdi_mortinf wdi_empser wbgi_vae hf_prights hf_business gpi_ss ffp_sl ffp_hr education coll_Pelham {
 		corr `var' individualism idv_H
    }
-   log close
-   * Logged output was manually transferred to "Indicators for Individualism.xlsx" for visualization in R (Figure 9)
+   * Output was manually transferred to "Indicators for Individualism.xlsx" for visualization in R (Figure 9)
       
+   
+
+   
+   
    
    
 
