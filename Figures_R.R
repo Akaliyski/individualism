@@ -13,32 +13,34 @@
 
 options(rlib_downstream_check = FALSE)
 
-library(gapminder)     # Example datasets
-library(here)          # Simplify file paths
-library(socviz)        # Social science visualization utilities
-library(tidyverse)     # Core tidy data packages: ggplot2, dplyr, tidyr, etc.
-library(haven)         # Read Stata (.dta) and SPSS/SAS files
-library(foreign)       # Legacy data import (older .dta, .dbf, etc.)
-library(readxl)        # Read Excel workbooks
-library(cowplot)       # Arrange multiple ggplots into grids
-library(ggrepel)       # Prevent overlapping text labels in ggplot2
-library(ggalt)         # Extra geoms for “geographic” plots
-library(ggfortify)     # Auto‐plotting for PCA and other stats objects
-library(ggforce)       # Additional ggplot2 extensions (e.g. facet_zoom)
-library(concaveman)    # Compute concave hulls around scatter points
-library(magrittr)      # Pipe operators (`%>%`)—already in tidyverse but explicit here
-library(dplyr)         # Data manipulation verbs (select, mutate, filter, etc.)
-library(ggpubr)        # Publication‐ready ggplot2 functions and themes
-library(pheatmap)      # Pretty heatmap visualization
-library(reshape)       # Reshape data frames (melt/cast) – older package, but used in parts
-library(countrycode)   # Convert between country code schemes (iso3c, iso3n, etc.)
-library(patchwork)     # Compose multiple ggplots with simple syntax
-library(mcr)           # Method comparison regression (Deming, Bland‐Altman)
-library(maps)          # Map data (world, US states, etc.)
-library(ggnewscale)    # Support for multiple fill/color scales in a single ggplot
-library(fillpattern)   # Fill polygon geoms with stripes, dots, etc.
-library(ggthemes)      # Extra ggplot2 themes (e.g., theme_fivethirtyeight)
-library(ggtext)        # Render markdown/HTML in ggplot2 text elements
+#Load all necessary library 
+library(gapminder)    
+library(here)          
+library(socviz)        
+library(tidyverse)     
+library(haven)        
+library(foreign)       
+library(readxl)        
+library(cowplot)      
+library(ggrepel)       
+library(ggalt)         
+library(ggfortify)    
+library(ggforce)       
+library(concaveman)    
+library(magrittr)     
+library(dplyr)         
+library(ggpubr)       
+library(pheatmap)    
+library(reshape)       
+library(countrycode)   
+library(patchwork)     
+library(mcr)          
+library(maps)         
+library(ggnewscale)   
+library(fillpattern)  
+library(ggthemes)     
+library(ggtext)      
+library(ggpattern)
 
 # Load custom fonts (e.g., “Segoe UI”) to ensure consistent styling
 extrafont::loadfonts(quiet = TRUE)
@@ -63,16 +65,21 @@ setwd("C:/Users/akali/OneDrive - Lingnan University/Desktop/Replication_Files/Ou
 
 # Read Stata file from data_dir
 mydata <- read.dta(file.path(data_dir, "Difference_from_Hofstede.dta"))
+mydata$EN_EA <- factor(mydata$EN_EA,
+                       levels = c("English-speaking", "East Asia", "All others"))
 
 # ---- Left panel: combined index vs. Hofstede ----
-H_C_plot <- ggplot(data=mydata, aes(x=IDV_combined, y=idv_Hofs, label=country, color=EN_EA)) +
+H_C_plot <- ggplot(data=mydata, aes(x=IDV_combined, y=idv_Hofs, label=country, color=EN_EA, shape=EN_EA)) +
+  geom_abline(intercept = 0, slope = 1, color = "black", size = 0.5) +
   geom_point(position=position_jitter(width=0.2, height=0), aes(color=EN_EA), size=3) + 
-  geom_text_repel(aes(label=country), size=3.5, box.padding = 0.5, point.padding = 0.5) + 
-  geom_abline(intercept = 0, slope = 1, color = "black", size = 0.5) +  # Isoline
+  scale_shape_manual(values = c("English-speaking" = 17, "East Asia" = 15, "All others" = 19)) +
+  scale_color_manual(values = c("English-speaking" = "#00BA38", "East Asia" = "#619CFF","All others" = "#F8766D")) +
+  labs(color = "Region", shape = "Region") +
+  geom_text_repel(aes(label=country), size=3.5, box.padding = 0.5, point.padding = 0.5, show.legend = FALSE) + 
   labs(x="Collectivism-Individualism Average of Recent Measures", y="Collectivism-Individualism Hofstede", color="Region") +
   theme_classic() +
-  theme(legend.position = c(1, 0.1),  # Place the legend at the bottom right
-        legend.justification = c(1, 0),  # Anchor the legend at its bottom right corner
+  theme(legend.position = c(1, 0.1),  
+        legend.justification = c(1, 0), 
         text = element_text(size=15)) +
 annotate("text", 
          x = Inf, y = Inf, 
@@ -89,15 +96,17 @@ start_value <- -20
 end_value <- 50     
 right_side_position <- max(mydata$IDV_difference, na.rm = TRUE) + 5 
 
-H_C <- ggplot(data=subset(mydata, !is.na(IDV_difference )), aes(x=IDV_difference , y=reorder(country, IDV_difference), color = EN_EA)) +
-  geom_point(size = 2) +
+H_C <- ggplot(data=subset(mydata, !is.na(IDV_difference )), aes(x=IDV_difference , y=reorder(country, IDV_difference), color = EN_EA, shape=EN_EA)) +
   geom_segment(aes(x = 0, 
                    xend = IDV_difference, 
                    y = reorder(country, IDV_difference), 
                    yend = reorder(country, IDV_difference)), size = 0.2) + 
   geom_vline(xintercept = 0, linewidth = 0.5, color = "grey80") +
   geom_vline(xintercept = seq(from = start_value, to = end_value, by = 10), color = "grey90", size = 0.2, alpha = 0.8) + 
-  labs (x = "Understimated Scores << >> Overestimated Scores                ",
+  geom_point(size = 2) +
+  scale_shape_manual(values = c("English-speaking" = 17, "East Asia" = 15, "All others" = 19)) +
+  scale_color_manual(values = c("English-speaking" = "#00BA38", "East Asia" = "#619CFF","All others" = "#F8766D")) +
+  labs (x = "Understimated Scores << >> Overestimated Scores                 ",
         y = "",
         color = NULL,
         title = "               Deviations") +
@@ -115,7 +124,7 @@ ggsave("Differences.png", plot = H_C, height = 7, width = 3.2, dpi = 300)
 
 combined_plot <- H_C_plot +  H_C + plot_layout(widths = c(2, 1))
 
-ggsave("Figure 2.png", combined_plot, width = 12, height = 6)
+ggsave("Figure 2.tif", combined_plot, width = 12, height = 6, dpi = 600, compression = "lzw")
 
 
 
@@ -365,7 +374,7 @@ CZ <- df %>%
                                                                                                                                      "Social Progress Index",
                                                                                                                                      "GDP per capita (log)",
                                                                                                                                      "Human Development Index")), fill = Value), color = "black") +
-  scale_fill_gradient(low = "white", high = "blue") + 
+  scale_fill_gradient(low = "#FFFFFF", high = "#4C8C74") + 
   geom_text(aes(x = Individualism, y = indicator, label = format(round(Value,2),nsmall=1)), size = 5.5) +
   labs(y = "Societal Indicator", x = "I-C Measure", fill = "Correlation") +
   theme(axis.text=element_text(size=13),
@@ -373,9 +382,10 @@ CZ <- df %>%
   theme(legend.position = "bottom")+ 
   theme(legend.title = element_text(size=14, face="bold")) + 
   theme(legend.text = element_text(size=11)) +
-  scale_fill_gradient(low = "white", high = "blue",
+  scale_fill_gradient(low = "#FFFFFF", high = "#4C8C74",
     breaks = c(0.6, 0.7, 0.8), 
-    labels = c(".60", ".70", ".80"))  
+    labels = c(".60", ".70", ".80"))  +
+  theme(panel.background = element_blank(), panel.grid = element_blank())
 
 ggsave("Figure 3 Nomological network of IDV dimensions.PNG", plot = CZ, height = 5, width = 12)
 
@@ -404,41 +414,55 @@ mydata <- read_excel(file.path(data_dir, "Study2c_individualism_and_obesity.xlsx
 
 mydata$dimension <- factor(mydata$dimension, c("Aut-Emb (Schwartz)", "EVI (Welzel)", "I-C (Inglehart)", "I-C (GLOBE)", "I-C (Minkov)", "I-C (Beug. & Welzel)","I-C (Hofstede)"))
 
+mydata$group <- ifelse(mydata$dimension == "I-C (Hofstede)", "Hofstede", "Recent measures")
+cols_2   <- c("Hofstede" = "#D96B67", "Recent measures" = "#2FA3A4")
+shapes_2 <- c("Hofstede" = 19,        "Recent measures" = 17)
+
 # Left Panel: Obesity among women
-p <- ggplot(data = mydata, mapping = aes(x = dimension, y = obesity_f, color = color))
+p <- ggplot(data = mydata, mapping = aes(x = dimension, y = obesity_f, color = color, shape = group))
 
 women <- p + geom_hline(yintercept = 0, size = 1, color = "grey80") + 
+  geom_hline(yintercept = 0, linewidth = 1, color = "grey80", show.legend = FALSE) +
   geom_point(position = position_dodge(0.3), size=3.5) + 
-  geom_errorbar(mapping = aes(ymin = obesity_f-1.96*SE_f, ymax = obesity_f+1.96*SE_f), width = 0.05) + 
+  geom_errorbar(aes(ymin = obesity_f - 1.96*SE_f, ymax = obesity_f + 1.96*SE_f), width = 0, show.legend = FALSE) +
   labs(x = "Individualism-collectivism dimension", 
        y = "Standardized beta coefficients", color = NULL, title = "Obesity among women") +
   coord_flip()  +
   theme_classic2() +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  scale_color_manual(values = cols_2, name = NULL) +
+  scale_shape_manual(values = shapes_2, name = NULL) +
+  guides(color = guide_legend(override.aes = list(size = 4)),
+         shape = guide_legend(override.aes = list(size = 4)))
 
 ggsave("Predictors of obesity women.png", plot = women, height = 4, width = 8, dpi = 300)
 
 
+
 # Right Panel: Obesity among men
-p <- ggplot(data = mydata, mapping = aes(x = dimension, y = obesity_m, color = color))
+p <- ggplot(data = mydata, mapping = aes(x = dimension, y = obesity_m, color = color, shape = group))
 
 men <- p + geom_hline(yintercept = 0, size = 1, color = "grey80") +
+  geom_hline(yintercept = 0, linewidth = 1, color = "grey80", show.legend = FALSE) +
   geom_point(position = position_dodge(0.3), size=3.5) + 
-  geom_errorbar(mapping = aes(ymin = obesity_m-1.96*SE_m, ymax = obesity_m+1.96*SE_m), width = 0.05) + 
+  geom_errorbar(aes(ymin = obesity_m - 1.96*SE_m, ymax = obesity_m + 1.96*SE_m), width = 0, show.legend = FALSE) + 
   labs(x = NULL, 
        y = "Standardized beta coefficients", color = NULL, title = "Obesity among men") +
   coord_flip() +
   theme_classic2() + 
   theme(legend.position = "none") +
   theme(axis.text.y = element_blank()) +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  scale_color_manual(values = cols_2, name = NULL) +
+  scale_shape_manual(values = shapes_2, name = NULL) +
+  theme(legend.position = "none")
 
 ggsave("Predictors of obesity men.png", plot = men, height = 4, width = 8, dpi = 300)
 
 # Combine both panels and save as Figure 4
 combined_obesity <- cowplot::plot_grid(women, men, nrow = 1, rel_widths = c(0.66, 0.34), scale = 1)
 
-ggsave("Figure 4 Individualism and obesity.png", plot = combined_obesity, height = 4, width = 10, dpi = 300)
+ggsave("Figure 4.tiff", plot = combined_obesity, height = 4, width = 10, dpi = 600, compression = "lzw") 
 
 
 
@@ -761,16 +785,18 @@ CZ <- ggplot(pivoted_data) +
                                                               "Childrearing for self-direction")), 
                 fill = Rank), 
             color = "black") +
-  scale_fill_gradient(low = "white", high = "blue", labels = scales::label_number(accuracy = 1)) +
+  scale_fill_gradient(low = "#FFFFFF", high = "#4C8C74", labels = scales::label_number(accuracy = 1)) +
   geom_text(aes(x = Region, y = Domain, label = format(round(Value, 1), nsmall = 1)), size = 5.5) +
   labs(y = "Individualism-Collectivism Subindex", x = "Culture zone", fill = "Rank") +
   theme(axis.text=element_text(size=13),
         axis.title=element_text(size=15, face="bold")) + 
   theme(legend.position = "bottom")+ 
   theme(legend.title = element_text(size=14, face="bold")) + 
-  theme(legend.text = element_text(size=11))
+  theme(legend.text = element_text(size=11)) +
+  theme(panel.background = element_blank(), panel.grid = element_blank())
 
-ggsave("Figure 8.png", plot = CZ, height = 5, width = 12, dpi = 300)
+ggsave("Figure 8.tiff", CZ, width = 12, height = 5, dpi = 600, compression = "lzw")
+
 
 
 
@@ -794,8 +820,6 @@ ggsave("Figure 8.png", plot = CZ, height = 5, width = 12, dpi = 300)
 # Read Excel file from data_dir
 df <- read_excel(file.path(data_dir, "Indicators for Individualism.xlsx"))
 
-custom_colors <- c("#006400", "#4B0082")
-
 p <- ggplot(data = df, mapping = aes(y = Individualism, x = Individualism_Hofstede, size = n_cases))
 
 corr <- p +  
@@ -811,7 +835,10 @@ corr <- p +
        shape = NULL) +
   guides(size = guide_legend("Sample size")) +
   guides(fill = "none") + 
-  theme_minimal_grid()   +  
+  theme(panel.grid.major = element_line(color = "grey92", linewidth = 0.3),
+        panel.grid.minor = element_blank()) + 
+  theme_minimal() +
+  theme(panel.ontop = FALSE) +  
   theme(legend.title = element_text(size = 8),
         legend.text = element_text(size = 6)) + 
   scale_y_continuous(limits = c(.40,.972), breaks = seq(0.40, 1, by = 0.10), expand = expansion(mult = c(0, 0.05))) +
@@ -824,6 +851,7 @@ corr <- p +
         legend.justification = c("right", "bottom"),
         legend.box.background = element_rect(fill = "white", color = "grey"), 
         legend.margin = margin(10, 10, 10, 10)) +  
+  coord_cartesian(clip = "on") +
   geom_abline(
     mapping = NULL,
     data = NULL,
@@ -833,10 +861,18 @@ corr <- p +
   annotate("richtext", x = 0.42, y = 0.96, label = "<b>Correlations higher with New I-C index</b>", 
            hjust = 0, size = 4.5, fill = NA, label.color = NA) +
   annotate("richtext", x = 0.96, y = 0.58, label = "<b>Correlations higher with Hofstede's I-C index</b>", 
-           hjust = 1, size = 4.5, fill = NA, label.color = NA)
+           hjust = 1, size = 4.5, fill = NA, label.color = NA) + 
+  theme(plot.background  = element_rect(fill = "white", colour = NA),
+          panel.background = element_rect(fill = "white", colour = NA)) + 
+  coord_cartesian(clip = "on") +
+  theme(panel.ontop = FALSE) + 
+  theme(axis.title.x = element_text(size = 14, margin = margin(t = 8)),
+    axis.title.y = element_text(size = 14, margin = margin(r = 8))) + 
+  theme(axis.text = element_text(size = 12))
 
 
-ggsave("Figure 9 Nomological validity.PDF", plot = corr, height = 10, width = 10)
+
+ggsave("Figure 9.tiff", corr, height = 10, width = 10, dpi = 600, compression = "lzw")
 
 
 
@@ -1003,29 +1039,10 @@ combined_plot <- midpart +
 
 combined_plot
 
-
-ggsave(combined_plot, filename = "Figure 10.png",
-       device = ragg::agg_png,
-       width = 4000, height = 1600, dpi = 340,
-       units = "px")
+ggsave("Figure 10.tiff", combined_plot, width = 4000, height = 1600, dpi = 340, units = "px", compression = "lzw")
 
 
-# layout <- paste(
-#   "ABBBBBBBBBBBBC",
-#   "ABBBBBBBBBBBBC",
-#   "ABBBBBBBBBBBBC",
-#   "ABBBBBBBBBBBBC",
-#   "ABBBBBBBBBBBBC",
-#   sep = "\n"
-# )
-
-# pp <- wrap_plots(
-#   A = sideplots[[1]],
-#   B = midpart,
-#   C = sideplots[[2]],
-#   design = layout
-# )
-
+        
 
 
 
