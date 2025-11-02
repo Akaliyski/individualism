@@ -4,7 +4,7 @@
 # Author:   Plamen Akaliyski (Lingnan University)
 # Contact:  akaliyski.plamen@gmail.com
 # Date:     2025‐06‐01
-# Last Updated: 2025‐06‐01
+# Last Updated: 2025‐10-02
 
 # This script uses the processed country‐level data (exported from Stata) to produce the figures
 
@@ -13,7 +13,7 @@
 
 options(rlib_downstream_check = FALSE)
 
-#Load all necessary library 
+#Load all necessary packages
 library(gapminder)    
 library(here)          
 library(socviz)        
